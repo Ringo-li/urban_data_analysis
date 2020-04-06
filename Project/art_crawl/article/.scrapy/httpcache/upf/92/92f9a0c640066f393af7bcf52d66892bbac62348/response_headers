@@ -1,0 +1,12 @@
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Server: Microsoft-IIS/7.5
+Set-Cookie: ASP.NET_SessionId=pwly3tsjhzdpv1ptykaql10t; path=/; HttpOnly
+Set-Cookie: ASP.NET_SessionId=pwly3tsjhzdpv1ptykaql10t; path=/; HttpOnly
+Set-Cookie: Ecp_ClientId=4200406180102693884; domain=cnki.net; expires=Sat, 06-Apr-2120 10:01:53 GMT; path=/
+Set-Cookie: SID_kcms=124119; path=/
+X-Aspnet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Date: Mon, 06 Apr 2020 10:01:52 GMT

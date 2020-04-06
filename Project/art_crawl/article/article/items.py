@@ -18,4 +18,5 @@ class ArticleItem(scrapy.Item):
     date = scrapy.Field()
     keywords = scrapy.Field()
     fund = scrapy.Field()
+    cite = scrapy.Field()
     # pass
