@@ -7,17 +7,15 @@ import json
 
 #ip = '{"code":0,"data":[{"ip":"58.218.214.152","port":6013,"outip":"182.90.203.164"}],"msg":"0","success":true}'
 
-def get_proxy()
+def get_proxy():
 
-
-    #请求地址
     targetUrl = "http://http.tiqu.alicdns.com/getip3?num=1&type=2&pro=&city=0&yys=0&port=1&pack=94107&ts=0&ys=0&cs=0&lb=1&sb=0&pb=4&mr=1&regions=&gm=4"
     try:
         response = requests.get(targetUrl)
         if response.status_code == 200:
             data = json.loads(response.text)
             time.sleep(1)
-            return data['data'][0]['ip'] + ':' + data['data'][0]['port']
+            return data['data'][0]['ip'] + ':' + str(data['data'][0]['port'])
     except:
         return None
 
@@ -31,7 +29,14 @@ def search(company):
     driver.get('https://www.qixin.com/')
     driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div[3]/div/div/div[2]/div/span[1]/input[2]').send_keys(company)
     driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div[3]/div/div/div[2]/div/span[2]').click()
-    time.sleep(1)
+    html = driver.page_source
+    sel = etree.HTML(html)
+    check = sel.xpath('/html/body/div[2]/div/div/div/div/button')
+    if check:
+        time.sleep(1)
+        driver.find_element_by_xpath('/html/body/div[2]/div/div/div/div/button').click()
+    else:
+        pass
     href = driver.find_element_by_xpath('/html/body/div[1]/div[1]/div/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/a').get_attribute('href')
     driver.get(href)
     time.sleep(1)
@@ -48,6 +53,9 @@ def search(company):
     lst.append(pages)
     driver.quit()
     return lst
+
+
+        # return search(company)
 
 if __name__ == "__main__":
     companies = pd.read_excel(r'D:/rui/code_analysis/file/subject/chapter3/company_list.xlsx')
