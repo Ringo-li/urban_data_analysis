@@ -116,7 +116,8 @@ if __name__ == '__main__':
     engine = create_engine('mssql+pyodbc://:@CLAIRE/baidu_poi?driver=SQL server')
     path = r'../../file/subject/chapter5/log.txt'
     # coor = [34.32016,108.962152,34.328478,108.972357]
-    coor = [34.16985,108.756009,34.395586,109.146952]
+    # coor = [34.16985,108.756009,34.395586,109.146952]
+    coor = [34.16985,108.756009,34.247411,109.146952]
     divd = 0.02
     print('Start crawling data...')
     start_time = time.time()
@@ -125,9 +126,9 @@ if __name__ == '__main__':
     for h1,v in pois.items():
         print('##############################爬取 ',h1)
         file_name = 'baidu_poi_{}'.format(h1)
-        for loc_to_use in locs_to_use[200:]:
+        for i,loc_to_use in enumerate(locs_to_use):
             coor_use = ','.join(loc_to_use)
-            print('##################200:/{} starting ...#####################'.format(len(locs_to_use)))
+            print('##################{}:/{} starting ...#####################'.format(i,len(locs_to_use)))
             for h2 in v:
                 par = Baidupoi(h2,coor_use,path)
                 dt = par.get_data()

@@ -159,28 +159,20 @@ def out_of_china(lng, lat):
     """
     return not (lng > 73.66 and lng < 135.05 and lat > 3.86 and lat < 53.55)
 
-def coor_trans(i):
-    for j in  range(i*1000):
-        df.loc[j:j,('lat_wgs84','lng_wgs84')] = bd09_to_wgs84(df.lat[j],df.lng[j])
-        # df.loc[j:j,('lat_wgs84','lng_wgs84')] = [df.lat[j],df.lng[j]]
 
 if __name__ == '__main__':
-    df = pd.read_csv(r'..\..\file\subject\chapter5\all_data.csv')
+    df = pd.read_csv(r'..\..\file\subject\chapter5\all_wgs84_3.csv')
     df['lat_wgs84'] = 0.00
     df['lng_wgs84'] = 0.00
     start_time = time.time()
 
-    for i in range(len(df)//1000+1):
-    # for i in range(29,31):
-        coor_trans(i)
-        print(i,'done!')
+    for i in range(len(df)):
+        df.loc[i:i,('lng_wgs84','lat_wgs84')] = bd09_to_wgs84(df.lng[i],df.lat[i])
+        # print(df['lat'][i],'done!')
 
-    #最后一个非1000整数对象
-    for i in range(len(df)-(len(df)%1000),len(df)):
-        df.loc[i:i,('lat_wgs84','lng_wgs84')] = bd09_to_wgs84(df.lat[i],df.lng[i])
     print('last done!')
 
-    df.to_csv(r'..\..\file\subject\chapter5\all_wgs84.csv')
+    df.to_csv(r'..\..\file\subject\chapter5\all_wgs84_4.csv')
     end_time = time.time()
     print('total time use {}'.format(end_time-start_time))
     

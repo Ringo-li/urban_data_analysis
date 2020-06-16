@@ -159,16 +159,17 @@ def out_of_china(lng, lat):
 
 
 if __name__ == '__main__':
-    lng = 116.397026
-    lat = 39.918058
-    result1 = gcj02_to_bd09(lng, lat)
-    result2 = bd09_to_gcj02(lng, lat)
-    result3 = wgs84_to_gcj02(lng, lat)
-    result4 = gcj02_to_wgs84(lng, lat)
-    result5 = bd09_to_wgs84(lng, lat)
-    result6 = wgs84_to_bd09(lng, lat)
+    lng = 109.013503
+    lat = 34.3885
 
-    g = Geocoding('50ace0067201128f9781da8128e942f0')  # 这里填写你的高德api的key
-    result7 = g.geocode('北京市东城区故宫博物院')
+    # result1 = gcj02_to_bd09(lng, lat)
+    # result2 = bd09_to_gcj02(lng, lat)
+    # result3 = wgs84_to_gcj02(lng, lat)
+    # result4 = gcj02_to_wgs84(lng, lat)
+    result5 = bd09_to_wgs84(lng, lat)
+    # result6 = wgs84_to_bd09(lng, lat)
+
+    # g = Geocoding('50ace0067201128f9781da8128e942f0')  # 这里填写你的高德api的key
+    # result7 = g.geocode('北京市东城区故宫博物院')
 #    print(result1, result2, result3, result4, result5, result6, result7)
-    print(result4, result7)
+    print(result5)
