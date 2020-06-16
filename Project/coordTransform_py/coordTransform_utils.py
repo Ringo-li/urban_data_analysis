@@ -159,8 +159,8 @@ def out_of_china(lng, lat):
 
 
 if __name__ == '__main__':
-    lng = 109.013503
-    lat = 34.3885
+    lng = 108.756009
+    lat = 34.16985
 
     # result1 = gcj02_to_bd09(lng, lat)
     # result2 = bd09_to_gcj02(lng, lat)
